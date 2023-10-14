@@ -8,8 +8,9 @@ import (
 func SetupRouter(ctrl *controller.UrlController) *gin.Engine {
 	r := gin.Default()
 
-	r.POST("/shorten", ctrl.ShortenURL)
-	r.GET("/url/:code", ctrl.GetUrl)
+	r.POST("/", ctrl.ShortenURL)
+	r.GET("/:code", ctrl.GetUrl)
+	r.GET("/", ctrl.GetAllUrls)
 
 	return r
 }

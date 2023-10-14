@@ -54,3 +54,13 @@ func (ctrl UrlController) GetUrl(c *gin.Context) {
 
 	c.Redirect(http.StatusFound, url)
 }
+
+func (ctrl UrlController) GetAllUrls(c *gin.Context) {
+	urls, err := ctrl.repository.GetAllUrls()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"urls": urls})
+}

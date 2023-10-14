@@ -58,3 +58,21 @@ func (repo UrlRepository) GetUrl(code string) (string, error) {
 	}
 	return url, nil
 }
+
+func (repo UrlRepository) GetAllUrls() ([]domain.UrlDomain, error) {
+	rows, err := repo.Db.Query("SELECT code, url FROM short_url")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var urls []domain.UrlDomain
+	for rows.Next() {
+		var urlDomain domain.UrlDomain
+		if err := rows.Scan(&urlDomain.Code, &urlDomain.URL); err != nil {
+			return nil, err
+		}
+		urls = append(urls, urlDomain)
+	}
+	return urls, nil
+}
