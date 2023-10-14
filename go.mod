@@ -1,8 +1,11 @@
-module github.com/riqueGo/url_shortner
+module github.com/riqueGo/url_shortener
 
 go 1.20
 
-require github.com/gin-gonic/gin v1.9.1
+require (
+	github.com/gin-gonic/gin v1.9.1
+	github.com/lib/pq v1.10.9
+)
 
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect

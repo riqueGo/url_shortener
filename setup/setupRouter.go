@@ -2,14 +2,14 @@ package setup
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/riqueGo/url_shortner/controller"
+	"github.com/riqueGo/url_shortener/controller"
 )
 
-func SetupRouter() *gin.Engine {
+func SetupRouter(ctrl *controller.UrlController) *gin.Engine {
 	r := gin.Default()
 
-	r.POST("/shorten", controller.ShortenURL)
-	r.GET("/url/:code", controller.GetUrl)
+	r.POST("/shorten", ctrl.ShortenURL)
+	r.GET("/url/:code", ctrl.GetUrl)
 
 	return r
 }
