@@ -30,7 +30,12 @@ Create an http server that contains two endpoints:
 curl -X POST -d '{"url": "https://google.com"}' -H "Content-Type: application/json" http://localhost:8080/
 ```
 
-- `GET`
+- `GET url by code`
 ```
 curl http://localhost:8080/{code}
+```
+
+- `GET all urls`
+```
+curl http://localhost:8080/
 ```
